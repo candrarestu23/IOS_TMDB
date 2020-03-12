@@ -10,12 +10,25 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+  var window: UIWindow?
+  private(set) var navigationController: UINavigationController?
 
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    setNavigationRoot()
     return true
+  }
+  
+  
+  // MARK: - Set Root View Controller
+  private func setNavigationRoot() {
+    window = UIWindow(frame: UIScreen.main.bounds)
+    
+    navigationController = UINavigationController(rootViewController: MainViewController())
+
+    window?.rootViewController = navigationController
+    window?.makeKeyAndVisible()
   }
 
   // MARK: UISceneSession Lifecycle
